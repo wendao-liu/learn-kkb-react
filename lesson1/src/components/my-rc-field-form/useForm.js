@@ -47,8 +47,10 @@ class FormStore {
     // store已经更新，下一步更新组件
     this.fieldEntities.forEach(entity => {
       const {name} = entity.props;
-      Object.keys(newStore).forEach(key => {
-        if (name === key) {
+      Object.keys(newStore).forEach(store => {
+        console.log("store ", store); //sy-log
+
+        if (name === store.name) {
           entity.onStoreChange();
         }
       });
