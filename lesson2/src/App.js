@@ -6,7 +6,7 @@ export default function App(props) {
   return (
     <div>
       <ReduxPage />
-      <UserPage />
+      {/* <UserPage /> */}
     </div>
   );
 }
@@ -54,11 +54,7 @@ function f3(arg) {
 //     return funcs[0];
 //   }
 //   return funcs.reduce((a, b) => (...args) => a(b(...args)));
-//   // return funcs.reduce((a, b) => {
-//   //   return (...args) => {
-//   //     return a(b(...args));
-//   //   };
-//   // });
+
 // }
 
 // // 做下适配，参数值可以是0到多个

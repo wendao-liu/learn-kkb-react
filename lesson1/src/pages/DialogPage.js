@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Dialog from "../components/Dialog";
+import Dialog from "../components/MyDialogPage";
 
 export default class DialogPage extends Component {
   constructor(props) {
