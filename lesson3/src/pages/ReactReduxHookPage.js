@@ -1,6 +1,6 @@
 import React, {useCallback} from "react";
 // import {useSelector, useDispatch} from "react-redux";
-import {useSelector, useDispatch} from "../kReactRedux";
+import {useSelector, useDispatch} from "../lReactRedux";
 
 // 获取state和获取dispatch
 export default function ReactReduxHookPage(props) {

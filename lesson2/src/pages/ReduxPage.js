@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import store from "../store/";
+import TeatA from './TeatA.js'
+import TeatB from './TeatB.js'
 
 export default class ReduxPage extends Component {
   componentDidMount() {
@@ -22,19 +24,19 @@ export default class ReduxPage extends Component {
 
   asyAdd = () => {
     // 模拟下异步数据请求
-    // store.dispatch((dispatch, getState) => {
-    //   setTimeout(() => {
-    //     console.log("getState", getState()); //sy-log
-    //     dispatch({type: "ADD"});
-    //   }, 1000);
-    // });
+    store.dispatch((dispatch, getState) => {
+      setTimeout(() => {
+        console.log("getState", getState()); //sy-log
+        dispatch({ type: "ADD" });
+      }, 1000);
+    });
 
-    store.dispatch(
-      Promise.resolve({
-        type: "MINUS",
-        payload: 100
-      })
-    );
+    // store.dispatch(
+    //   Promise.resolve({
+    //     type: "MINUS",
+    //     payload: 100
+    //   })
+    // );
   };
 
   render() {
@@ -45,6 +47,8 @@ export default class ReduxPage extends Component {
         <p>{store.getState().count1}</p>
         <button onClick={this.add}>add</button>
         <button onClick={this.asyAdd}>asy add</button>
+        <TeatA></TeatA>
+        <TeatB></TeatB>
       </div>
     );
   }

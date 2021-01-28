@@ -12,7 +12,7 @@ export const connect = (
 ) => WrappedComponent => props => {
   // 获取store
   const store = React.useContext(Context);
-  const {dispatch, getState, subscribe} = store;
+  const { dispatch, getState, subscribe } = store;
   // todo 给新返回的组件的props上加上store state和dispatch，这个dispatch不是特指dispatch方法
   const stateProps = mapStateToProps(getState());
   let dispatchProps = {
@@ -45,12 +45,15 @@ export const connect = (
 };
 
 // ! step2 : 使用Context.Provider把store传递下来
-export function Provider({store, children}) {
+export function Provider({ store, children }) {
   return <Context.Provider value={store}>{children}</Context.Provider>;
 }
 
 function bindActionCreator(creator, dispatch) {
-  return (...args) => dispatch(creator(...args));
+  return (...args) => {
+    console.log(...args);
+    return dispatch(creator(...args))
+  };
 }
 export function bindActionCreators(creators, dispatch) {
   let obj = {};
@@ -67,7 +70,7 @@ export function bindActionCreators(creators, dispatch) {
 export function useSelector(selector) {
   // 获取store state
   const store = useStore();
-  const {getState} = store;
+  const { getState } = store;
   const selectedState = selector(getState());
 
   //函数组件中引起更新

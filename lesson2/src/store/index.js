@@ -97,4 +97,6 @@ function thunk({ dispatch, getState }) {
   };
 }
 
+export { countReducer }
+
 export default store;
