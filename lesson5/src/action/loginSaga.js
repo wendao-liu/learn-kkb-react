@@ -1,6 +1,7 @@
 // （thunk）异步请求 call
 // （dispatch）更新状态 put
 
+// takeEvery 监听
 import {call, put, takeEvery} from "redux-saga/effects";
 import LoginService from "../service/login";
 
