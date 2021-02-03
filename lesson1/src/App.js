@@ -10,7 +10,7 @@ export default function App(props) {
     <div>
       <button onClick={()=>{setCount((c)=>(c+1))}}>2321</button>
       <div>{count}</div>
-      <DialogPage />
+      <MyRCFieldForm />
     </div>
   );
 }

@@ -12,7 +12,8 @@ import {login} from "../action/user";
 @connect(
   ({user}) => ({isLogin: user.isLogin, loading: user.loading, err: user.err}),
   {
-    login //: userInfo => ({type: "LOGIN_SUCCESS", payload: userInfo})
+    login, 
+    // login: userInfo => ({type: "LOGIN_SUCCESS", payload: userInfo})
   }
 )
 class LoginPage extends Component {

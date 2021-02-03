@@ -10,7 +10,7 @@ class FormStore {
   validate = () => {
     const err = []
     this.fieldEntities.forEach((entity) => {
-      const { rules, name } = entity.props;
+      const { rules, name } = entity.props.current;
       const { required, message } = rules[0]
       const value = this.getFieldValue(name);
       if(required && !this.store[name]) {
@@ -23,17 +23,18 @@ class FormStore {
     return err
   }
 
-
   submit = () => {
     const err = this.validate()
     return err
   }
 
   registerField = (entity) => { 
+    console.log(entity,'entity')
     this.fieldEntities.push(entity);
+
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== entity)
-      delete this.store[entity.props.name]
+      delete this.store[entity.props.current.name]
     }
   }
   getFieldValue = (name) => { 
@@ -47,8 +48,7 @@ class FormStore {
     }
 
     this.fieldEntities.forEach((entity) => {
-      console.log(entity.onStoreChange(),'entity')
-        const { name } = entity.props;
+        const { name } = entity.props.current;
         Object.keys(newStore).forEach((key) => {
           if(key === name) {
             entity.onStoreChange();
@@ -64,13 +64,18 @@ class FormStore {
     }
   }
 
+  getCurrent = () => {
+    return this.fieldEntities;
+  }
+
   getForm = () => {
     return {
       submit: this.submit,
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
       registerField: this.registerField,
-      setCallback: this.setCallback
+      setCallback: this.setCallback,
+      getCurrent: this.getCurrent
     }
   }
 }
@@ -81,6 +86,7 @@ const useForm = (form) => {
     if(form) {
       formRef.current = form;
     }else {
+      console.log('form')
       const formStore = new FormStore();
       formRef.current = formStore.getForm();
     }

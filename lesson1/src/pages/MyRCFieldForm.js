@@ -1,6 +1,6 @@
 import React, {Component, useEffect} from "react";
 // import Form, {Field} from "rc-field-form";
-import Form, {Field} from "../components/lhy3-rc-field-form/";
+import Form, {Field} from "../components/lhy-rc-field-form/";
 import Input from "../components/Input";
 
 const nameRules = {required: true, message: "请输入姓名！"};
@@ -42,8 +42,10 @@ const passworRules = {required: true, message: "请输入密码！"};
 export default class MyRCFieldForm extends Component {
   formRef = React.createRef();
   componentDidMount() {
-    console.log("form", this.formRef.current); //sy-log
-    this.formRef.current.setFieldsValue({username: "default"});
+    console.log("form---", this.formRef.current); //sy-log
+    setTimeout(() => {
+      this.formRef.current.setFieldsValue({username: "default"});
+    })
   }
 
   onFinish = val => {
@@ -57,12 +59,12 @@ export default class MyRCFieldForm extends Component {
   render() {
     return (
       <div>
-        <h3>MyRCFieldForm</h3>
+        <h3 onClick={() =>{this.setState({rule: Math.random()})}}>MyRCFieldForm</h3>
         <Form
           ref={this.formRef}
           onFinish={this.onFinish}
           onFinishFailed={this.onFinishFailed}>
-          <Field name="username" rules={[nameRules]}>
+          <Field name="username" rules={this.state?.rule}>
             <Input placeholder="Username" />
           </Field>
           <Field name="password" rules={[passworRules]}>
