@@ -1,3 +1,12 @@
+const fet = () => {
+  return new Promise(reslove => {
+    setTimeout(() => {
+      reslove(2313)
+    }, 2000)
+  })
+}
+
+
 export default {
   namespace: "user",
   state: {},
@@ -9,6 +18,7 @@ export default {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
+      yield call(fet);
       yield put({ type: "save" });
     }
   },

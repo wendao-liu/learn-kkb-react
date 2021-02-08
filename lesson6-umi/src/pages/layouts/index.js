@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.css';
+import {connect} from 'umi'
 
 export default ({ children }) => {
   return (

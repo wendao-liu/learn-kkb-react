@@ -3,12 +3,19 @@ import { connect } from "dva";
 
 // 访问store  state的user
 
-@connect(({ user }) => ({
-  user
+@connect(({ user, loading }) => ({
+  user,
+  testloading: loading.effects['user/fetch']
 }))
 class UserPage extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/fetch'
+    })
+  }
   render() {
-    console.log("user--", this.props); //sy-log
+    console.log("user--", this.props.testloading); //sy-log
     return (
       <div>
         <h3>UserPage</h3>

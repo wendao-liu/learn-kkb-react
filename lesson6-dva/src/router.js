@@ -13,7 +13,8 @@ function RouterConfig({ history }) {
       <Switch>
         <Route path="/" exact component={IndexPage} />
         <Route path="/example" component={ExamplePage} />
-        <Route path="/user" component={UserPageDynamic} />
+        {/* <Route path="/user" component={UserPageDynamic} /> */}
+        <Route path="/user" component={UserPage} />
         <Route path="/test" component={Test} />
       </Switch>
     </Router>

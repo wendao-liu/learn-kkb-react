@@ -19,8 +19,8 @@ function countReducer(state = 0, action) {
 }
 
 const store = createStore(
-  countReducer,
-  // combineReducers({count: countReducer}),
+  // countReducer,
+  combineReducers({count: countReducer}),
   applyMiddleware(thunk,logger)
 );
 

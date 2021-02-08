@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "umi_debug",
+      "program": "${workspaceFolder}/packages/umi/bin/umi.js",
+      "autoAttachChildProcesses": true,
+      "args": [
+        "build",
+        "--cwd=${workspaceFolder}/examples/func-test",
+      ],
+      "env": {
+        "DEBUG":"umi-build-dev:Service"
+      }
+    }
+  ]
+}
