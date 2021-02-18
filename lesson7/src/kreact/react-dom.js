@@ -1,4 +1,4 @@
-import {TEXT} from "./const";
+import { TEXT } from "./const";
 
 // ! vnode、vvnode 虚拟dom节点
 // ! node 真实dom节点
@@ -7,6 +7,8 @@ function render(vnode, container) {
   console.log("vnode--render", vnode); //sy-log
   // vnode->node
   const node = createNode(vnode);
+
+  console.log(node, 'node')
   // 把node插入container
   container.appendChild(node);
 }
@@ -14,7 +16,7 @@ function render(vnode, container) {
 // 生成真实dom节点
 function createNode(vnode) {
   let node = null;
-  const {type, props} = vnode;
+  const { type, props } = vnode;
 
   if (type === TEXT) {
     //创建文本节点
@@ -25,13 +27,16 @@ function createNode(vnode) {
   } else if (typeof type === "function") {
     // 类组件 或者函数组件
 
+    console.log(type.isReactComponent, '6666')
     node = type.isReactComponent
       ? updateClassComponent(vnode)
       : updateFunctionComponent(vnode);
   } else {
+    console.log(type, 'createDocumentFragment')
     node = document.createDocumentFragment();
   }
 
+  console.log(props.children, node, 'props.children, node')
   reconcileChildren(props.children, node);
   updateNode(node, props);
   return node;
@@ -51,12 +56,13 @@ function updateNode(node, nextVal) {
   Object.keys(nextVal)
     .filter(k => k !== "children")
     .forEach(k => {
+      console.log(k, nextVal[k], 'nextVal[k]')
       node[k] = nextVal[k];
     });
 }
 
 function updateClassComponent(vnode) {
-  const {type, props} = vnode;
+  const { type, props } = vnode;
   const cmp = new type(props);
   const vvnode = cmp.render();
   // 返回真实dom节点
@@ -65,9 +71,9 @@ function updateClassComponent(vnode) {
 }
 
 function updateFunctionComponent(vnode) {
-  const {type, props} = vnode;
+  const { type, props } = vnode;
   const vvnode = type(props);
   const node = createNode(vvnode);
   return node;
 }
-export default {render};
+export default { render };

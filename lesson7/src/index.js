@@ -1,9 +1,9 @@
 // import React, {Component} from "react";
 // import ReactDOM from "react-dom";
 
-import React from "./kreact/";
-import ReactDOM from "./kreact/react-dom";
-import Component from "./kreact/Component";
+import React from "./lreact/";
+import ReactDOM from "./lreact/react-dom";
+import Component from "./lreact/Component";
 import "./index.css";
 
 class ClassComponent extends Component {
@@ -20,7 +20,7 @@ class ClassComponent extends Component {
   }
 }
 
-function FunctionComponent({name}) {
+function FunctionComponent({ name }) {
   return <div className="border">{name}</div>;
 }
 
@@ -30,7 +30,7 @@ const jsx = (
     <a href="https://www.kaikeba.com/">开课吧</a>
     <ClassComponent name="class component" />
     <FunctionComponent name="function component" />
-
+    <GetAA></GetAA>
     <ul>
       <li>1</li>
       <li>omg-2</li>
@@ -38,14 +38,14 @@ const jsx = (
   </div>
 );
 
-// function GetAA() {
-//   return (
-//     <>
-//       <li>1</li>
-//       <li>omg-2</li>
-//     </>
-//   );
-// }
+function GetAA() {
+  return (
+    <>
+      <li>1</li>
+      <li>omg-2</li>
+    </>
+  );
+}
 
 ReactDOM.render(jsx, document.getElementById("root"));
 
