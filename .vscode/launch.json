@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "umi_debug",
-      "program": "${workspaceFolder}/packages/umi/bin/umi.js",
+      "program": "./Untitled-1.js",
       "autoAttachChildProcesses": true,
       "args": [
         "build",

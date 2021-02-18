@@ -26,6 +26,7 @@ const checkPermissions = <T, K>(
 ): T | K | React.ReactNode => {
   // 没有判定权限.默认查看所有
   // Retirement authority, return target;
+  debugger
   if (!authority) {
     return target;
   }
@@ -77,6 +78,7 @@ const checkPermissions = <T, K>(
 export { checkPermissions };
 
 function check<T, K>(authority: IAuthorityType, target: T, Exception: K): T | K | React.ReactNode {
+  debugger
   return checkPermissions<T, K>(authority, CURRENT, target, Exception);
 }
 

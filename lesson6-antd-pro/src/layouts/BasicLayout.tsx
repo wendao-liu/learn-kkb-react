@@ -120,6 +120,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   };
   const { formatMessage } = useIntl();
 
+  debugger
   return (
     <ProLayout
       logo={logo}

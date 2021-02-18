@@ -55,6 +55,7 @@ export default defineConfig({
               name: 'welcome',
               icon: 'smile',
               component: './Welcome',
+              authority: ['admin',],
             },
             {
               path: '/admin',
