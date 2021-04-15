@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {ThemeProvider} from "../Context";
+import {ThemeProvider, ThemeConsumer} from "../Context";
 import ConsumerPage from "./ConsumerPage";
 import ContextTypePage from "./ContextTypePage";
 import UseContextPage from "./UseContextPage";
@@ -29,6 +29,13 @@ export default class ContextPage extends Component {
         <h3>ContextPage</h3>
         <button onClick={this.changeColor}>change color</button>
         <ThemeProvider value={theme}>
+          <ThemeConsumer>
+            {
+              (context) => {
+                return(<div>2222{context.themeColor}</div>)
+              }
+            }
+          </ThemeConsumer>
           <ConsumerPage />
           <ContextTypePage />
           <UseContextPage />

@@ -25,7 +25,6 @@ const createStore = (reducer, enhancer) => {
     return currentState;
   }
 
-  debugger
   dispatch({ type: "KKKKKKKKREDUX/OOOOOOOOOO" });
 
 

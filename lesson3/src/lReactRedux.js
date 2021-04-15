@@ -12,7 +12,10 @@ const useStore = () => {
 }
 
 const bindActionCreator = (creator, dispatch) => {
-  return (...args) => dispatch(creator(...args))
+  return (...args) => {
+    console.log(args, 'args'); // lhy-log
+    return dispatch(creator(...args))
+  }
 }
 
 const bindActionCreators = (creators, dispatch) => {

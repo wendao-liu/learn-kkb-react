@@ -1,5 +1,5 @@
 // import {createStore, applyMiddleware, combineReducers} from "redux";
-import { createStore, applyMiddleware } from "../lllredux/";
+import { createStore, applyMiddleware } from "../lredux/";
 
 // import thunk from "redux-thunk";
 // import logger from "redux-logger";
@@ -47,6 +47,7 @@ function combineReducers(reducers) {
 const store = createStore(
   combineReducers({ count: countReducer, color: colorReducer }),
   applyMiddleware(thunk, logger, promise)
+  // applyMiddleware(thunk, logger)
 );
 
 const isPromise = (f) => {
@@ -63,33 +64,29 @@ function promise({ dispatch }) {
   // test.then(testb);
   // test.then((res) => { testb(res) });
   return next => action => {
+    console.log(next, action, 'promise-action')
     return isPromise(action) ? action.then(dispatch) : next(action);
   };
 }
 
 function logger({ dispatch, getState }) {
   return next => action => {
-    console.log("+++++++++++++++++++++++++++++++"); //sy-log
-
+    console.log(action, 'logger-action')
     // prev state
-
     const prevState = getState();
     console.log("prev state", prevState); //sy-log
-
     const returnValue = next(action);
     // next state
     const nextState = getState();
     console.log("next state", nextState); //sy-log
-
-    console.log("+++++++++++++++++++++++++++++++"); //sy-log
-
-    return returnValue;
+    // return returnValue;
   };
 }
 
 // 这是处理异步的thunk中间件
 function thunk({ dispatch, getState }) {
   return next => action => {
+    console.log(next, action, 'thunk-action')
     if (typeof action === "function") {
       return action(dispatch, getState);
     }

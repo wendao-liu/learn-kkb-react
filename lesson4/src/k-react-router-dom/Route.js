@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {RouterContext} from "./Context";
+import React, { Component } from "react";
+import { RouterContext } from "./Context";
 import matchPath from "./matchPath";
 
 export default class Route extends Component {
@@ -8,12 +8,12 @@ export default class Route extends Component {
       <RouterContext.Consumer>
         {context => {
           const location = context.location;
-          const {path, children, component, render} = this.props;
+          const { path, children, component, render } = this.props;
           const match = this.props.computedMatch
             ? this.props.computedMatch
             : path
-            ? matchPath(location.pathname, this.props)
-            : context.match;
+              ? matchPath(location.pathname, this.props)
+              : context.match;
 
           const props = {
             ...context,
@@ -25,19 +25,21 @@ export default class Route extends Component {
 
           return (
             <RouterContext.Provider value={props}>
-              {match
-                ? children
-                  ? typeof children === "function"
+              {
+                match
+                  ? children
+                    ? typeof children === "function"
+                      ? children(props)
+                      : children
+                    : component
+                      ? React.createElement(component, props)
+                      : render
+                        ? render(props)
+                        : null
+                  : typeof children === "function"
                     ? children(props)
-                    : children
-                  : component
-                  ? React.createElement(component, props)
-                  : render
-                  ? render(props)
-                  : null
-                : typeof children === "function"
-                ? children(props)
-                : null}
+                    : null
+              }
             </RouterContext.Provider>
           );
         }}

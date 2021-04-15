@@ -34,10 +34,9 @@ const compose = (...funcs) => {
   // [thunk({dispatch, getState}),logger({dispatch, getState})]
   // logger({dispatch, getState})(thunk({dispatch, getState})(fn-dispatch))
 
-  return funcs.reduce((a,b) => (...args) =>{
-    a(...args)
-    debugger
-    return b(a(...args))
+  return funcs.reduce((a, b) => (...args) => {
+    // a(...args)
+    return a(b(...args))
   })
 }
 // (action) => {

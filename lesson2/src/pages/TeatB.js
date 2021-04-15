@@ -4,7 +4,7 @@ import { countReducer } from '../store/index.js'
 const TestB = () => {
   const [count, dispatch] = useReducer(countReducer, 0);
   return (
-    <div>{count}</div>
+    <div>{count}213</div>
   )
 }
 

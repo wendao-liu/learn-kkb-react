@@ -24,19 +24,19 @@ export default class ReduxPage extends Component {
 
   asyAdd = () => {
     // 模拟下异步数据请求
-    store.dispatch((dispatch, getState) => {
-      setTimeout(() => {
-        console.log("getState", getState()); //sy-log
-        dispatch({ type: "ADD" });
-      }, 1000);
-    });
+    // store.dispatch((dispatch, getState) => {
+    //   setTimeout(() => {
+    //     // console.log("getState", getState()); //sy-log
+    //     dispatch({ type: "ADD" });
+    //   }, 1000);
+    // });
 
-    // store.dispatch(
-    //   Promise.resolve({
-    //     type: "MINUS",
-    //     payload: 100
-    //   })
-    // );
+    store.dispatch(
+      Promise.resolve({
+        type: "MINUS",
+        payload: 100
+      })
+    );
   };
 
   render() {

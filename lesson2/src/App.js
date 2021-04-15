@@ -54,10 +54,12 @@ function f3(arg) {
 //     return funcs[0];
 //   }
 //   return funcs.reduce((a, b) => (...args) => a(b(...args)));
-
 // }
+// ((...args) => f1(f2(...args)))(f3(...args))
+// (...args) => f1(f2(f3(...args)))
 
+// f1(f2(f3('omg')))
 // // 做下适配，参数值可以是0到多个
-// let res = compose(f1)("omg");
+// let res = compose(f1,f2,f3)("omg");
 
 // console.log("res", res); //sy-log
